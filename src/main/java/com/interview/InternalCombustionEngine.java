@@ -4,13 +4,12 @@ public class InternalCombustionEngine implements Engine{
 
     private boolean running;
     private int fuelLevel;
-    private FuelType requiredFuelType;
     private FuelType fuelType;
 
-    public InternalCombustionEngine(FuelType requiredFuelType) {
+    public InternalCombustionEngine(FuelType fuelType) {
 
-        if(requiredFuelType.equals(FuelType.PETROL) || requiredFuelType.equals(FuelType.DIESEL)) {
-            this.requiredFuelType = requiredFuelType;
+        if(fuelType.equals(FuelType.PETROL) || fuelType.equals(FuelType.DIESEL)) {
+            this.fuelType = fuelType;
         }else{
             throw new IllegalArgumentException("Not a valid Fuel type.");
         }
@@ -20,7 +19,7 @@ public class InternalCombustionEngine implements Engine{
     }
 
     public void start() {
-        if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
+        if (fuelLevel > 0 && fuelType.equals(fuelType)) {
             running = true;
         } else {
             throw new IllegalStateException("Not able to start engine.");
@@ -54,6 +53,10 @@ public class InternalCombustionEngine implements Engine{
     }
 
     public FuelType getFuelType() {
-        return  requiredFuelType;
+        return  fuelType;
+    }
+
+    public double getRunningCost() {
+        return fuelType.equals(FuelType.PETROL) ? 9.0 : 12.0;
     }
 }

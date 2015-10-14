@@ -98,4 +98,13 @@ public class InternalCombustionEngineTest {
         assertThat(engine.getFuelLevel(), is(0));
     }
 
+    @Test
+    public void calculateRunningCost(){
+        Engine engine = new InternalCombustionEngine(FuelType.PETROL);
+        assertThat(engine.getRunningCost(), is(9.0));
+        engine = new InternalCombustionEngine(FuelType.DIESEL);
+        assertThat(engine.getRunningCost(), is(12.0));
+
+    }
+
 }

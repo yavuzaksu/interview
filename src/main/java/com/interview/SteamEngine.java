@@ -4,12 +4,11 @@ public class SteamEngine implements Engine {
 
     private boolean running;
     private int fuelLevel;
-    private FuelType requiredFuelType;
     private FuelType fuelType;
 
-    public SteamEngine(FuelType requiredFuelType) {
-        if(requiredFuelType.equals(FuelType.COAL) || requiredFuelType.equals(FuelType.WOOD)) {
-            this.requiredFuelType = requiredFuelType;
+    public SteamEngine(FuelType fuelType) {
+        if(fuelType.equals(FuelType.COAL) || fuelType.equals(FuelType.WOOD)) {
+            this.fuelType = fuelType;
         }else{
             throw new IllegalArgumentException("Not a valid Fuel type.");
         }
@@ -36,6 +35,11 @@ public class SteamEngine implements Engine {
     }
 
     public FuelType getFuelType() {
-        return  requiredFuelType;
+        return  fuelType;
+    }
+
+    public double getRunningCost() {
+
+        return fuelType.equals(FuelType.COAL) ? 5.65 : 4.35;
     }
 }
