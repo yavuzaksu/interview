@@ -17,13 +17,13 @@ public class WidgetMachine {
     }
 
     private double produce(Engine engine, int quantity) {
-        int batch = engine.getBatchSize();
+        int batch = 0;
         int batchCount = 0;
         double costPerBatch = engine.getBatchCost();
 
 
         while ( batch < quantity) {
-            batch = batch + 8;
+            batch = batch + engine.getBatchSize();
             batchCount++;
         }
 

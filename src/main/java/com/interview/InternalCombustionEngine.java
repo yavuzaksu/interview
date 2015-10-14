@@ -19,6 +19,6 @@ public class InternalCombustionEngine  extends AbstractEngine implements Engine{
     }
 
     public int getBatchSize() {
-      return 0;
+      return 8;
     }
 }

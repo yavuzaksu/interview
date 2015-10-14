@@ -17,15 +17,15 @@ public class WidgetMachineTest {
 
         WidgetMachine machine = new WidgetMachine();
         Engine engine = new SteamEngine(FuelType.WOOD);
-        engine.fill(FuelType.WOOD, 100);
-        double cost = machine.produceWidgets(engine, 100);
-        assertThat(cost,  is(56.55));
+        engine.fill(FuelType.WOOD, 80);
+        double cost = machine.produceWidgets(engine, 80);
+        assertThat(cost,  is(174.0));
         assertThat(engine.isRunning(),  is(false));
 
         engine = new SteamEngine(FuelType.WOOD);
         engine.fill(FuelType.WOOD, 5);
-        cost = machine.produceWidgets(engine, 34);
-        assertThat(cost,  is(17.4));
+        cost = machine.produceWidgets(engine, 10);
+        assertThat(cost,  is(21.75));
         assertThat(engine.isRunning(),  is(false));
 
     }
@@ -37,13 +37,13 @@ public class WidgetMachineTest {
         Engine engine = new SteamEngine(FuelType.COAL);
         engine.fill(FuelType.COAL, 80);
         double cost = machine.produceWidgets(engine, 10);
-        assertThat(cost,  is(5.65));
+        assertThat(cost,  is(28.25));
         assertThat(engine.isRunning(),  is(false));
 
         engine = new SteamEngine(FuelType.COAL);
         engine.fill(FuelType.COAL, 100);
         cost = machine.produceWidgets(engine, 100);
-        assertThat(cost,  is(73.45));
+        assertThat(cost,  is(282.5));
         assertThat(engine.isRunning(),  is(false));
 
 
