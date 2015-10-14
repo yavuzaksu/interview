@@ -39,11 +39,11 @@ public class SteamEngineTest {
     }
 
     @Test
-    public void calculateRunningCost(){
+    public void calculateCostPerBatch(){
         Engine engine = new SteamEngine(FuelType.WOOD);
-        assertThat(engine.getRunningCost(), is(4.35));
+        assertThat(engine.getBatchCost(), is(4.35));
         engine = new SteamEngine(FuelType.COAL);
-        assertThat(engine.getRunningCost(), is(5.65));
+        assertThat(engine.getBatchCost(), is(5.65));
 
     }
 

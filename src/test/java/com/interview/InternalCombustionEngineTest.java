@@ -21,7 +21,7 @@ public class InternalCombustionEngineTest {
         InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
         assertThat(engine.isRunning(), is(false));
         assertThat(engine.getFuelLevel(), is(0));
-        assertThat(engine.getFuelType(), is(FuelType.DIESEL));
+        assertThat(engine.getRequiredFuelType(), is(FuelType.DIESEL));
 
     }
 
@@ -29,11 +29,11 @@ public class InternalCombustionEngineTest {
     public void constructionWithWrongFuel() {
 
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        thrown.expectMessage(equalTo("Not a valid Fuel type to initialise the engine."));
         Engine engine = new InternalCombustionEngine(FuelType.WOOD);
 
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        thrown.expectMessage(equalTo("Not a valid Fuel type to initialise the engine."));
         engine = new InternalCombustionEngine(FuelType.COAL);
 
     }
@@ -85,6 +85,22 @@ public class InternalCombustionEngineTest {
     }
 
     @Test
+    public void fillWithWrongFuel() {
+
+        InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type to fill the engine."));
+        engine.fill(FuelType.WOOD, 50);
+
+        new InternalCombustionEngine(FuelType.DIESEL);
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type to fill the engine."));
+        engine.fill(FuelType.COAL, 50);
+
+
+    }
+
+    @Test
     public void fillBoundries() {
 
         InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
@@ -99,11 +115,14 @@ public class InternalCombustionEngineTest {
     }
 
     @Test
-    public void calculateRunningCost(){
+    public void calculateCostPerBatch(){
         Engine engine = new InternalCombustionEngine(FuelType.PETROL);
-        assertThat(engine.getRunningCost(), is(9.0));
+        engine.fill(FuelType.PETROL, 0);
+        assertThat(engine.getBatchCost(), is(9.0));
+
         engine = new InternalCombustionEngine(FuelType.DIESEL);
-        assertThat(engine.getRunningCost(), is(12.0));
+        engine.fill(FuelType.DIESEL, 0);
+        assertThat(engine.getBatchCost(), is(12.0));
 
     }
 

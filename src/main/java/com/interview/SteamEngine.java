@@ -2,15 +2,19 @@ package com.interview;
 
 public class SteamEngine implements Engine {
 
+    public static final int BATCH_SIZE = 2;
+
     private boolean running;
     private int fuelLevel;
     private FuelType fuelType;
+    private FuelType requiredFuelType;
 
     public SteamEngine(FuelType fuelType) {
-        if(fuelType.equals(FuelType.COAL) || fuelType.equals(FuelType.WOOD)) {
-            this.fuelType = fuelType;
+
+        if(isRightFuelForTheEngine(requiredFuelType)) {
+            this.requiredFuelType = requiredFuelType;
         }else{
-            throw new IllegalArgumentException("Not a valid Fuel type.");
+            throw new IllegalArgumentException("Not a valid Fuel type to initialise the engine.");
         }
         running = false;
         fuelLevel = 0;
@@ -34,12 +38,23 @@ public class SteamEngine implements Engine {
         return fuelLevel;
     }
 
+    public FuelType getRequiredFuelType() {
+        return  requiredFuelType;
+    }
     public FuelType getFuelType() {
         return  fuelType;
     }
 
-    public double getRunningCost() {
+    public double getBatchCost() {
 
         return fuelType.equals(FuelType.COAL) ? 5.65 : 4.35;
+    }
+
+    public int getBatchSize() {
+        return 0;
+    }
+
+    private boolean isRightFuelForTheEngine(FuelType fuelType){
+        return fuelType.equals(FuelType.WOOD) || fuelType.equals(FuelType.COAL) ? true : false;
     }
 }

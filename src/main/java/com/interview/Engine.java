@@ -9,5 +9,6 @@ public interface Engine {
     void fill(FuelType fuelType, int fuelLevel);
     int getFuelLevel() ;
     FuelType getFuelType() ;
-    double getRunningCost();
+    FuelType getRequiredFuelType() ;
+    double getBatchCost();
 }

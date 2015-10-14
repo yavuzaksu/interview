@@ -2,16 +2,19 @@ package com.interview;
 
 public class InternalCombustionEngine implements Engine{
 
+    public static final int BATCH_SIZE = 0;
+
     private boolean running;
     private int fuelLevel;
     private FuelType fuelType;
+    private FuelType requiredFuelType;
 
-    public InternalCombustionEngine(FuelType fuelType) {
+    public InternalCombustionEngine(final FuelType requiredFuelType) {
 
-        if(fuelType.equals(FuelType.PETROL) || fuelType.equals(FuelType.DIESEL)) {
-            this.fuelType = fuelType;
+        if(isRightFuelForTheEngine(requiredFuelType)) {
+            this.requiredFuelType = requiredFuelType;
         }else{
-            throw new IllegalArgumentException("Not a valid Fuel type.");
+            throw new IllegalArgumentException("Not a valid Fuel type to initialise the engine.");
         }
 
         running = false;
@@ -19,7 +22,7 @@ public class InternalCombustionEngine implements Engine{
     }
 
     public void start() {
-        if (fuelLevel > 0 && fuelType.equals(fuelType)) {
+        if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
             running = true;
         } else {
             throw new IllegalStateException("Not able to start engine.");
@@ -35,6 +38,13 @@ public class InternalCombustionEngine implements Engine{
     }
 
     public void fill(FuelType fuelType, int fuelLevel) {
+
+        if(isRightFuelForTheEngine(fuelType)) {
+            this.fuelType = fuelType;
+        }else{
+            throw new IllegalArgumentException("Not a valid Fuel type to fill the engine.");
+        }
+
         if (fuelLevel >= 0 && fuelLevel <= 100) {
             this.fuelLevel = fuelLevel;
         }
@@ -52,11 +62,20 @@ public class InternalCombustionEngine implements Engine{
         return fuelLevel;
     }
 
+    public FuelType getRequiredFuelType() {
+        return  requiredFuelType;
+    }
     public FuelType getFuelType() {
         return  fuelType;
     }
 
-    public double getRunningCost() {
+    public double getBatchCost() {
         return fuelType.equals(FuelType.PETROL) ? 9.0 : 12.0;
+    }
+
+
+
+    private boolean isRightFuelForTheEngine(FuelType fuelType){
+        return fuelType.equals(FuelType.PETROL) || fuelType.equals(FuelType.DIESEL) ? true : false;
     }
 }
