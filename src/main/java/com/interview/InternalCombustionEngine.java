@@ -2,7 +2,6 @@ package com.interview;
 
 public class InternalCombustionEngine  extends AbstractEngine implements Engine{
 
-    public static final int BATCH_SIZE = 0;
 
     public InternalCombustionEngine(final FuelType requiredFuelType) {
 
@@ -17,5 +16,9 @@ public class InternalCombustionEngine  extends AbstractEngine implements Engine{
 
     boolean isRightFuelForTheEngine(FuelType fuelType){
         return fuelType.equals(FuelType.PETROL) || fuelType.equals(FuelType.DIESEL) ? true : false;
+    }
+
+    public int getBatchSize() {
+      return 0;
     }
 }

@@ -11,4 +11,5 @@ public interface Engine {
     FuelType getFuelType() ;
     FuelType getRequiredFuelType() ;
     double getBatchCost();
+    int getBatchSize();
 }

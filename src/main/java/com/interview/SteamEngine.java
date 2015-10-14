@@ -2,7 +2,6 @@ package com.interview;
 
 public class SteamEngine extends AbstractEngine implements Engine {
 
-    public static final int BATCH_SIZE = 2;
 
     public SteamEngine(FuelType requiredFuelType) {
        super(requiredFuelType);
@@ -15,5 +14,9 @@ public class SteamEngine extends AbstractEngine implements Engine {
 
     boolean isRightFuelForTheEngine(FuelType fuelType){
         return fuelType.equals(FuelType.WOOD) || fuelType.equals(FuelType.COAL) ? true : false;
+    }
+
+    public int getBatchSize() {
+        return 2;
     }
 }
