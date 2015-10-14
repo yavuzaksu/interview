@@ -18,7 +18,23 @@ public class SteamEngineTest {
     @Test
     public void construction() {
 
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        assertThat(engine.isRunning(), is(false));
+        assertThat(engine.getFuelLevel(), is(0));
+        assertThat(engine.getFuelType(), is(FuelType.WOOD));
+
+    }
+
+    @Test
+    public void constructionWithWrongFuel() {
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        Engine engine = new SteamEngine(FuelType.DIESEL);
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        engine = new SteamEngine(FuelType.PETROL);
 
     }
 

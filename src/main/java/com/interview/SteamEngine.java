@@ -1,30 +1,23 @@
 package com.interview;
 
-public class InternalCombustionEngine implements Engine{
+public class SteamEngine implements Engine {
 
     private boolean running;
     private int fuelLevel;
     private FuelType requiredFuelType;
     private FuelType fuelType;
 
-    public InternalCombustionEngine(FuelType requiredFuelType) {
-
-        if(requiredFuelType.equals(FuelType.PETROL) || requiredFuelType.equals(FuelType.DIESEL)) {
+    public SteamEngine(FuelType requiredFuelType) {
+        if(requiredFuelType.equals(FuelType.COAL) || requiredFuelType.equals(FuelType.WOOD)) {
             this.requiredFuelType = requiredFuelType;
         }else{
             throw new IllegalArgumentException("Not a valid Fuel type.");
         }
-
         running = false;
         fuelLevel = 0;
     }
 
     public void start() {
-        if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
-            running = true;
-        } else {
-            throw new IllegalStateException("Not able to start engine.");
-        }
     }
 
     public void stop() {
@@ -36,17 +29,6 @@ public class InternalCombustionEngine implements Engine{
     }
 
     public void fill(FuelType fuelType, int fuelLevel) {
-        if (fuelLevel >= 0 && fuelLevel <= 100) {
-            this.fuelLevel = fuelLevel;
-        }
-        else if (fuelLevel > 100) {
-            this.fuelLevel = 100;
-        }
-        else {
-            this.fuelLevel = 0;
-        }
-
-        this.fuelType = fuelType;
     }
 
     public int getFuelLevel() {

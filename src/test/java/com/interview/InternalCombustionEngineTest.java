@@ -26,6 +26,19 @@ public class InternalCombustionEngineTest {
     }
 
     @Test
+    public void constructionWithWrongFuel() {
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        Engine engine = new InternalCombustionEngine(FuelType.WOOD);
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        engine = new InternalCombustionEngine(FuelType.COAL);
+
+    }
+
+    @Test
     public void startBad() {
         InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
         thrown.expect(IllegalStateException.class);
