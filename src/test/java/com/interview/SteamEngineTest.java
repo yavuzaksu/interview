@@ -38,6 +38,16 @@ public class SteamEngineTest {
 
     }
 
+    //4.35 if wood is used, and £5.65
+    @Test
+    public void calculateCost(){
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        assertThat(engine.getRunningCost(), is(4.35));
+        engine = new SteamEngine(FuelType.WOOD);
+        assertThat(engine.getRunningCost(), is(5.65));
+
+    }
+
     @Test
     public void startBad() {
         fail();
