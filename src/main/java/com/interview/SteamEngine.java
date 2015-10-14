@@ -21,6 +21,11 @@ public class SteamEngine implements Engine {
     }
 
     public void start() {
+        if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
+            running = true;
+        } else {
+            throw new IllegalStateException("Not able to start engine.");
+        }
     }
 
     public void stop() {
@@ -30,6 +35,7 @@ public class SteamEngine implements Engine {
     public boolean isRunning() {
         return running;
     }
+
 
     public void fill(FuelType fuelType, int fuelLevel) {
 

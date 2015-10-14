@@ -53,23 +53,39 @@ public class SteamEngineTest {
 
     @Test
     public void startBad() {
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage(equalTo("Not able to start engine."));
+        engine.start();
     }
 
     @Test
     public void start() {
-        fail();
+        Engine engine = new SteamEngine(FuelType.COAL);
+        engine.fill(FuelType.COAL, 50);
+        engine.start();
+        assertThat(engine.isRunning(), is(true));
     }
 
     @Test
     public void stop() {
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        engine.fill(FuelType.WOOD, 50);
+        engine.start();
+        assertThat(engine.isRunning(), is(true));
+        engine.stop();
+        assertThat(engine.isRunning(), is(false));
     }
 
     @Test
     public void isRunning() {
 
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        engine.fill(FuelType.WOOD, 50);
+        engine.start();
+        assertThat(engine.isRunning(), is(true));
+        engine.stop();
+        assertThat(engine.isRunning(), is(false));
     }
 
     @Test
