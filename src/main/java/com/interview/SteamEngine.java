@@ -9,7 +9,7 @@ public class SteamEngine implements Engine {
     private FuelType fuelType;
     private FuelType requiredFuelType;
 
-    public SteamEngine(FuelType fuelType) {
+    public SteamEngine(FuelType requiredFuelType) {
 
         if(isRightFuelForTheEngine(requiredFuelType)) {
             this.requiredFuelType = requiredFuelType;
@@ -32,6 +32,24 @@ public class SteamEngine implements Engine {
     }
 
     public void fill(FuelType fuelType, int fuelLevel) {
+
+        if(isRightFuelForTheEngine(fuelType)) {
+            this.fuelType = fuelType;
+        }else{
+            throw new IllegalArgumentException("Not a valid Fuel type to fill the engine.");
+        }
+
+        if (fuelLevel >= 0 && fuelLevel <= 100) {
+            this.fuelLevel = fuelLevel;
+        }
+        else if (fuelLevel > 100) {
+            this.fuelLevel = 100;
+        }
+        else {
+            this.fuelLevel = 0;
+        }
+
+        this.fuelType = fuelType;
     }
 
     public int getFuelLevel() {

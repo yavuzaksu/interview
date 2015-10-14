@@ -21,7 +21,7 @@ public class SteamEngineTest {
         Engine engine = new SteamEngine(FuelType.WOOD);
         assertThat(engine.isRunning(), is(false));
         assertThat(engine.getFuelLevel(), is(0));
-        assertThat(engine.getFuelType(), is(FuelType.WOOD));
+        assertThat(engine.getRequiredFuelType(), is(FuelType.WOOD));
 
     }
 
@@ -29,11 +29,11 @@ public class SteamEngineTest {
     public void constructionWithWrongFuel() {
 
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        thrown.expectMessage(equalTo("Not a valid Fuel type to initialise the engine."));
         Engine engine = new SteamEngine(FuelType.DIESEL);
 
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(equalTo("Not a valid Fuel type."));
+        thrown.expectMessage(equalTo("Not a valid Fuel type to initialise the engine."));
         engine = new SteamEngine(FuelType.PETROL);
 
     }
@@ -41,8 +41,12 @@ public class SteamEngineTest {
     @Test
     public void calculateCostPerBatch(){
         Engine engine = new SteamEngine(FuelType.WOOD);
+        engine.fill(FuelType.WOOD, 0);
         assertThat(engine.getBatchCost(), is(4.35));
+
+
         engine = new SteamEngine(FuelType.COAL);
+        engine.fill(FuelType.COAL, 0);
         assertThat(engine.getBatchCost(), is(5.65));
 
     }
@@ -69,15 +73,33 @@ public class SteamEngineTest {
     }
 
     @Test
-    public void fill() {
+    public void fillWithWrongFuel() {
 
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type to fill the engine."));
+        engine.fill(FuelType.DIESEL, 50);
+
+        engine = new SteamEngine(FuelType.COAL);
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("Not a valid Fuel type to fill the engine."));
+        engine.fill(FuelType.PETROL, 50);
+
+
     }
 
     @Test
     public void fillBoundries() {
 
-        fail();
+        Engine engine = new SteamEngine(FuelType.WOOD);
+        engine.fill(FuelType.WOOD, 100);
+        assertThat(engine.getFuelLevel(), is(100));
+        engine.fill(FuelType.WOOD, 0);
+        assertThat(engine.getFuelLevel(), is(0));
+        engine.fill(FuelType.WOOD, 103);
+        assertThat(engine.getFuelLevel(), is(100));
+        engine.fill(FuelType.WOOD, -3);
+        assertThat(engine.getFuelLevel(), is(0));
     }
 
 }
