@@ -38,19 +38,51 @@ public class InternalCombustionEngineTest {
         InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
         engine.fill(FuelType.DIESEL, 50);
         engine.start();
+        assertThat(engine.isRunning(), is(true));
     }
 
     @Test
     public void stop() {
-
+        InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
+        engine.fill(FuelType.DIESEL, 50);
+        engine.start();
+        assertThat(engine.isRunning(), is(true));
+        engine.stop();
+        assertThat(engine.isRunning(), is(false));
     }
 
     @Test
     public void isRunning() {
+
+        InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
+        engine.fill(FuelType.DIESEL, 50);
+        engine.start();
+        assertThat(engine.isRunning(), is(true));
+        engine.stop();
+        assertThat(engine.isRunning(), is(false));
     }
 
     @Test
     public void fill() {
+
+        InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
+        engine.fill(FuelType.DIESEL, 50);
+        assertThat(engine.getFuelType(), is(FuelType.DIESEL));
+        assertThat(engine.getFuelLevel(), is(50));
+    }
+
+    @Test
+    public void fillBoundries() {
+
+        InternalCombustionEngine engine = new InternalCombustionEngine(FuelType.DIESEL);
+        engine.fill(FuelType.DIESEL, 100);
+        assertThat(engine.getFuelLevel(), is(100));
+        engine.fill(FuelType.DIESEL, 0);
+        assertThat(engine.getFuelLevel(), is(0));
+        engine.fill(FuelType.DIESEL, 103);
+        assertThat(engine.getFuelLevel(), is(100));
+        engine.fill(FuelType.DIESEL, -3);
+        assertThat(engine.getFuelLevel(), is(0));
     }
 
 }

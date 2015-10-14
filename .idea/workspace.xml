@@ -28,8 +28,8 @@
       <file leaf-file-name="InternalCombustionEngineTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/interview/InternalCombustionEngineTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.09832636">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="41" />
+            <state vertical-scroll-proportion="-1.6046025">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -39,7 +39,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/interview/InternalCombustionEngine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="43" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="43" />
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WidgetMachine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/interview/WidgetMachine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -530,18 +540,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/interview/WidgetMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/interview/InternalCombustionEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="43" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/interview/InternalCombustionEngineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09832636">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="41" />
+        <state vertical-scroll-proportion="-1.6046025">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="41" />
           <folding />
         </state>
       </provider>
